@@ -9,8 +9,6 @@ import { PieChart } from './pieChart';
 import { TrafficChart } from './trafficChart';
 import { PieChartService } from './pieChart/pieChart.service';
 import { TrafficChartService } from './trafficChart/trafficChart.service';
-import {AngularChart} from './components/angularchart/angularchart.component';
-import {KibanaChart} from './components/kibanaChart/kibanaChart.component';
 
 
 @NgModule({
@@ -23,8 +21,6 @@ import {KibanaChart} from './components/kibanaChart/kibanaChart.component';
   declarations: [
     PieChart,
     TrafficChart,
-    AngularChart,
-    KibanaChart,
     Dashboard
   ],
   providers: [
