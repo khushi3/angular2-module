@@ -1,0 +1,124 @@
+@import "../../../../theme/sass/conf/conf";
+
+.ng2-smart-table-container table.ng2-smart-table {
+th, td {
+border: 1px solid #ddd !important;
+line-height: 35px;
+vertical-align: middle;
+}
+
+tbody>tr:nth-child(odd){
+    background-color: #f9f9f9;
+}
+
+
+color: #000;
+
+input {
+line-height: 1.5 !important;
+}
+
+tbody {
+tr:hover {	
+background: rgba(0, 0, 0, 0.10);
+}
+}
+
+a.ng2-smart-sort-link {
+font-size: 14px !important;
+color: #000;
+font-weight: $font-bolder;
+&.sort {
+font-weight: bold;
+
+&::after {
+border-bottom-color: #000 !important;
+}
+}
+}
+
+.ng2-smart-actions {
+.actions {
+float: none;
+color: #A52A2A;
+}
+}
+
+a.ng2-smart-action {
+font-size: 14px !important;
+color: #A52A2A;
+padding: 0 5px;
+display: inline-block;
+
+&.ng2-smart-action-add-add {
+font-size: 25px !important;
+}
+}
+}
+
+nav.ng2-smart-pagination-nav {
+display: flex;
+justify-content: center;
+}
+
+.al-main {
+background-color: #e5e5e5;
+color: #000000;
+}
+
+main {
+color: #000000;
+background-color: #e5e5e5;
+}
+
+.card.with-scroll .card-body {
+	color: #000;
+    height: calc(100% - 44px);
+    overflow-y: scroll;
+    background-color: #fff;
+    box-shadow: 3px 5px 5px #888888;
+}
+
+.card-header{
+  background-image: -webkit-linear-gradient(top, #fff 0, #f2f2f2 100%);
+}
+
+.card-title {
+font-size: 16px;
+font-weight: bold;
+color : #000;
+}
+.ng2-smart-table-container table.ng2-smart-table td {
+line-height: 26px;
+}
+
+.ng2-smart-table-container table.ng2-smart-table input {
+    background-color: #A52A2A;
+    text-transform: uppercase;
+    margin-left: -12px;
+}
+
+.ng2-smart-row.selected {
+  white-space: normal;
+}
+	
+/*.channels-block {
+    width: 60%;
+}*/
+
+.ng2-smart-titles{
+    box-shadow: 0px 2px 0px #888888;
+}
+
+.ng2-smart-table-container table.ng2-smart-table a.ng2-smart-sort-link.sort {
+    font-weight: bold;
+    color: #A52A2A;
+}
+.table thead  tr th:first-child {
+    color: #A52A2A;
+    font-weight: bold;
+}
+.form-control {
+    font-size: 12px;
+}
+

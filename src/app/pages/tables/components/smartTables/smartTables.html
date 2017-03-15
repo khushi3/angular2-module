@@ -1,0 +1,32 @@
+
+<div class="widgets">
+	<div class="row">
+		<ba-card title="Elastic Search Information" baCardClass="with-scroll">
+			
+			<div class="col-md-9">
+				<h3 class="pull-right"  style="font-size: 15px;" >Showing {{ source.count()}} of {{filteredcount}} entries
+				</h3>
+			</div>
+
+			<!-- <div class="col-md-2">
+				<h3 class="pull-right"  style="font-size: 15px;" >
+					<label>Rows Per Page:</label>
+				</h3>
+			</div> -->
+			<!-- <div class="col-md-1">
+				<h3 class="pull-right"  style="font-size: 15px;" >
+
+					<select  
+					[ngModel]="selectedPageObj" (ngModelChange)="onChangePage($event)" name="sel3">
+					<option [ngValue]="i" *ngFor="let i of rowPerPage">{{i.page}}</option>
+				</select>
+			</h3>
+		</div> -->
+
+		<div class="col-md-12" style="object-position: fixed;">
+			<ng2-smart-table [settings]="settings" [source]="source" 
+			(deleteConfirm)="onDeleteConfirm($event)"> </ng2-smart-table>
+		</div>		
+	</ba-card>
+</div>
+</div>
