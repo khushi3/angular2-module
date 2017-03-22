@@ -17,7 +17,7 @@ export class Dashboard {
       this.items = data;
       console.log(data);
     }, error => console.log('Could not load List of Service'));
-    
+
   }
   removeRecordPlugin(item) {
         // this.recentlyRemoveUsers = this.table.items.remove(item);
@@ -28,7 +28,7 @@ export class Dashboard {
             this.item = item;
 
             console.log( "func "+item);
-            this.tableService.addItem(this.item);
+            this.items.push(this.tableService.addItem(this.item));
 
 
         }
