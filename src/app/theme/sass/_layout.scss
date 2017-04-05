@@ -19,9 +19,9 @@ main {
   min-height: 100%;
   position: relative;
   font: 14px/16px $font-family;
- // color: $default-text;
+  color: $default-text;
 
- @include body-bg();
+  @include body-bg();
 
   .additional-bg {
     display: none;
@@ -74,8 +74,9 @@ a {
   display: block;
   bottom: 0;
   font-size: 13px;
-  color: $default-text;
+  color: #fff;
   transition: padding-left 0.5s ease;
+  background-color : #2c2d33;
 }
 
 .al-footer-main {
@@ -137,8 +138,13 @@ a {
 }
 
 .al-content {
-  padding: 0;
- // background-color: #000;
+  padding: 8px 32px 8px 40px;
+
+  background-color: #ecf0f5;
+
+
+ // background-color: #fff;
+
 }
 
 @media screen and (max-width: $resXS) {

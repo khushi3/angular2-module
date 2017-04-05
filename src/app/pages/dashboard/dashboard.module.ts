@@ -11,7 +11,8 @@ import { routing }       from './dashboard.routing';
 
 import { UsersMap } from './usersMap';
 import { UsersMapService } from './usersMap/usersMap.service';
-import { TablesService  } from './tables.service';
+import { UserGroupService  } from './usergroup.service';
+import { DualListComponent } from './dual-list.component';
 
 
 @NgModule({
@@ -25,11 +26,12 @@ import { TablesService  } from './tables.service';
   ],
   declarations: [
     UsersMap,
-    Dashboard
+    Dashboard,
+    DualListComponent
   ],
   providers: [
     UsersMapService,
-    TablesService
+    UserGroupService
   ]
 })
 export class DashboardModule {}
