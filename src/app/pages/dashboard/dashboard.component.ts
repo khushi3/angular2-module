@@ -4,13 +4,16 @@ import { ViewContainerRef, ViewEncapsulation } from '@angular/core';
 import {Http, Response} from '@angular/http';
 import { Modal, BSModalContext } from 'angular2-modal/plugins/bootstrap';
 import { Overlay, overlayConfigFactory } from 'angular2-modal';
-
+import { CustomModal } from './custom-modal-sample';
 
 @Component({
   selector: 'dashboard',
   styleUrls: ['./dashboard.scss'],
   templateUrl: './dashboard.html',
-  providers: [Modal]
+  providers: [Modal],
+  entryComponents: [
+    CustomModal
+  ]
 })
 export class Dashboard implements OnInit{
 
@@ -36,13 +39,13 @@ export class Dashboard implements OnInit{
 
       console.log(data);
     }, error => console.log('Could not load userGroups '));
-    
+
   }
 
   removeRecordPlugin(item) {
         // this.recentlyRemoveUsers = this.table.items.remove(item);
     }
- 
+
   addUserGroup() { //userGrpName : string
     //console.log("inside add")
         if (this.userGroupName) {
@@ -54,7 +57,7 @@ export class Dashboard implements OnInit{
                   console.log(r);
                 });
             console.log("user group saved successfully!!");
-            
+
             window.location.reload();
         }
     }
@@ -64,56 +67,57 @@ export class Dashboard implements OnInit{
     console.log("clicking on edit")
   }
  onClick() {
-    this.modal.alert()
-        .size('lg')
-        .showClose(true)
-        .title('A simple Alert style modal window')
-        .body(`<div class="container-fluid">
-  <p></p>
-  <dual-list [sort]="keepSorted" [source]="source" [key]="key" [display]="display" [filter]="filter" [(destination)]="confirmed" height="265px"></dual-list>
-
-  
-
-  <div class="tab-content">
-    <div class="tab-pane" [class.active]="tab===1">
-      <div class="row">
-        <div class="col-sm-6" style="margin-top:32px;"><h4>Source</h4><pre><small>{{source|json}}</small></pre></div>
-        <div class="col-sm-6" style="margin-top:32px;"><h4>Confirmed</h4><pre><small>{{confirmed|json}}</small></pre></div>
-      </div>
-    </div>
-
-    <div class="tab-pane" [class.active]="tab===2">
-      <div class="row" style="margin-top:20px;">
-        <div class="col-sm-6">
-          <label>Modify parent's source</label>
-          <form class="form-inline well">
-            <input class="form-control col-sm-1" style="margin-right:4px;" [(ngModel)]="userAdd" name="userAdd">
-            <button class="btn btn-success" (click)="doCreate()" [disabled]="!userAdd.length">Create</button>
-            <button class="btn btn-danger" (click)="doDelete()">Delete</button>
-          </form>
-        </div>
-        <div class="col-sm-6">
-          <label>Modify parent's confirmed</label>
-          <form class="form-inline well">
-          <button class="btn btn-default" (click)="doAdd()">Add</button>
-          <button class="btn btn-default" (click)="doRemove()">Remove</button>
-        </form>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12">
-        <label>General</label><br/>
-        <form class="form-inline well">
-          <button class="btn btn-default" (click)="doFilter()">{{filterBtn()}}</button>
-          <button class="btn btn-default" (click)="doSwap()">Swap source</button>
-          <button class="btn btn-primary" (click)="doReset()">Reset</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-            `)
-        .open();
+   this.modal.open(CustomModal, overlayConfigFactory({ num1: 2, num2: 3 }, BSModalContext));
+//     this.modal.alert()
+//         .size('lg')
+//         .showClose(true)
+//         .title('A simple Alert style modal window')
+//         .body(`<div class="container-fluid">
+//   <p></p>
+//   <dual-list [sort]="keepSorted" [source]="source" [key]="key" [display]="display" [filter]="filter" [(destination)]="confirmed" height="265px"></dual-list>
+//
+//
+//
+//   <div class="tab-content">
+//     <div class="tab-pane" [class.active]="tab===1">
+//       <div class="row">
+//         <div class="col-sm-6" style="margin-top:32px;"><h4>Source</h4><pre><small>{{source|json}}</small></pre></div>
+//         <div class="col-sm-6" style="margin-top:32px;"><h4>Confirmed</h4><pre><small>{{confirmed|json}}</small></pre></div>
+//       </div>
+//     </div>
+//
+//     <div class="tab-pane" [class.active]="tab===2">
+//       <div class="row" style="margin-top:20px;">
+//         <div class="col-sm-6">
+//           <label>Modify parent's source</label>
+//           <form class="form-inline well">
+//             <input class="form-control col-sm-1" style="margin-right:4px;" [(ngModel)]="userAdd" name="userAdd">
+//             <button class="btn btn-success" (click)="doCreate()" [disabled]="!userAdd.length">Create</button>
+//             <button class="btn btn-danger" (click)="doDelete()">Delete</button>
+//           </form>
+//         </div>
+//         <div class="col-sm-6">
+//           <label>Modify parent's confirmed</label>
+//           <form class="form-inline well">
+//           <button class="btn btn-default" (click)="doAdd()">Add</button>
+//           <button class="btn btn-default" (click)="doRemove()">Remove</button>
+//         </form>
+//       </div>
+//     </div>
+//     <div class="row">
+//       <div class="col-sm-12">
+//         <label>General</label><br/>
+//         <form class="form-inline well">
+//           <button class="btn btn-default" (click)="doFilter()">{{filterBtn()}}</button>
+//           <button class="btn btn-default" (click)="doSwap()">Swap source</button>
+//           <button class="btn btn-primary" (click)="doReset()">Reset</button>
+//         </form>
+//       </div>
+//     </div>
+//   </div>
+// </div>
+//             `)
+//         .open();
   }
 
   private tab:number = 1;
@@ -263,5 +267,5 @@ export class Dashboard implements OnInit{
     return (this.filter ? 'Hide Filter' : 'Show Filter');
   }
 
-  
+
   }
