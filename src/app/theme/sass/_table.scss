@@ -3,10 +3,10 @@
   & > thead {
     & > tr {
       & > th {
-        border-bottom: 1px solid #ddd;
+        border-bottom: 1px solid $border-light;
         white-space: nowrap;
         &:first-child {
-         // text-align: center;
+          text-align: center;
         }
         &:last-child {
           padding-right: 16px;
@@ -22,9 +22,9 @@
       & > td {
         padding: 0px 8px;
         line-height: 35px;
-        border-top: 1px solid #ddd;
+        border-top: 1px solid $border-light;
         &:first-child {
-         // text-align: center;
+          text-align: center;
         }
         &:last-child {
           padding-right: 16px !important;
@@ -165,18 +165,15 @@ input.search-input {
 }
 
 .pagination > li > a, .pagination > li > span {
-  color: #000;
   background: transparent;
 }
 
 .pagination > li:first-child > a, .pagination > li:first-child > span {
-  color: #000;
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
 }
 
 .pagination > li:last-child > a, .pagination > li:last-child > span {
-  color: #000;
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
 }
@@ -240,11 +237,11 @@ input.search-input {
 .table-bordered > thead > tr > td,
 .table-bordered > tbody > tr > td,
 .table-bordered > tfoot > tr > td{
-  border: 1px solid #ddd;
+  border: 1px solid $border-light;
 }
 
 .table-striped > tbody > tr:nth-of-type(odd) {
-  background-color: rgba(0, 0, 0, 0.66);
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 @mixin color-row($color) {
@@ -296,8 +293,8 @@ th {
 }
 .pagination > li > a,
 .pagination > li > span{
-  color: #000;
-  border-color: #ddd;
+  color: $default-text;
+  border-color: $border;
 }
 
 
@@ -319,7 +316,7 @@ th {
 .pagination > .active > span:hover,
 .pagination > .active > a:focus,
 .pagination > .active > span:focus {
-  background-color: rgba(0,0,0,.55)!important;
+  background-color: rgba(0,0,0,.3)!important;
   border-color: $border!important;
 }
 
@@ -327,13 +324,13 @@ th {
 .pagination > li > span:hover,
 .pagination > li > a:focus,
 .pagination > li > span:focus{
-  background-color: rgba(0,0,0,.55);
+  background-color: rgba(0,0,0,.2);
   color: $default-text;
 }
 
 .page-item.disabled .page-link, .page-item.disabled .page-link:focus, .page-item.disabled .page-link:hover {
   background-color: rgba(255,255,255,.1);
-  color: #000;
+  color: $default-text;
 }
 
 .editable-buttons .btn-with-icon i {
@@ -342,8 +339,4 @@ th {
 
 .table-responsive {
   margin-top: 10px;
-}
-
-thead {
-    overflow-y: scroll;
 }

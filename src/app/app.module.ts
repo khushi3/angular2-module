@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
+
 /*
  * Platform and Environment providers/directives/pipes
  */
@@ -12,15 +13,10 @@ import { routing } from './app.routing';
 
 // App is our top level component
 import { App } from './app.component';
-import {FromComponentComponent} from "./from-component.component";
-
-// editor
 import { AppState, InternalStateType } from './app.service';
 import { GlobalState } from './global.state';
 import { NgaModule } from './theme/nga.module';
 import { PagesModule } from './pages/pages.module';
-import { RestService } from  './smartTables/rest.service';
-import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -28,7 +24,7 @@ const APP_PROVIDERS = [
   GlobalState
 ];
 
-type StoreType = {
+export type StoreType = {
   state: InternalStateType,
   restoreInputValues: () => void,
   disposeOldHosts: () => void
@@ -44,7 +40,6 @@ type StoreType = {
   ],
   imports: [ // import Angular's modules
     BrowserModule,
-    Ng2SmartTableModule,
     HttpModule,
     RouterModule,
     FormsModule,

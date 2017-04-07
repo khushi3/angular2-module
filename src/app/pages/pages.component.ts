@@ -1,8 +1,11 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import { Component } from '@angular/core';
+import { Routes } from '@angular/router';
+
+import { BaMenuService } from '../theme';
+import { PAGES_MENU } from './pages.menu';
+
 @Component({
   selector: 'pages',
-  encapsulation: ViewEncapsulation.None,
-  styles: [],
   template: `
     <ba-sidebar></ba-sidebar>
     <ba-page-top></ba-page-top>
@@ -12,26 +15,21 @@ import {Component, ViewEncapsulation} from '@angular/core';
         <router-outlet></router-outlet>
       </div>
     </div>
-    <!--<footer class="al-footer clearfix">
-      <div class="al-footer-right">Created with <i class="ion-heart"></i></div>
+    <footer class="al-footer clearfix">
+      <div class="al-footer-right"><strong> 3M User Management System</strong></div>
       <div class="al-footer-main clearfix">
-        <div class="al-copy">&copy; <a href="http://akveo.com">Akveo</a> 2016</div>
-        <ul class="al-share clearfix">
-          <li><i class="socicon socicon-facebook"></i></li>
-          <li><i class="socicon socicon-twitter"></i></li>
-          <li><i class="socicon socicon-google"></i></li>
-          <li><i class="socicon socicon-github"></i></li>
-        </ul>
+       <strong >Copyright &copy; 3MHIS <a href="#"></a></strong> 
       </div>
-    </footer>-->
+    </footer>
     <ba-back-top position="200"></ba-back-top>
     `
 })
 export class Pages {
 
-  constructor() {
+  constructor(private _menuService: BaMenuService,) {
   }
 
   ngOnInit() {
+    this._menuService.updateMenuByRoutes(<Routes>PAGES_MENU);
   }
 }

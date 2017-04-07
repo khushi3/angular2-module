@@ -1,0 +1,145 @@
+[{
+   "userGroup": "admin",
+   "users": [
+       "syndy",
+       "khushi",
+       "Machr"
+   ],
+   "roles": [
+      "Super Admin",
+      "scrum master"
+   ],
+   "location": [
+      "USA",
+      "bangalore"
+   ]
+},
+{
+   "userGroup": "SME",
+   "users": [
+       "jack",
+       "Ronl",
+       "kyle"
+   ],
+   "roles": [
+      "developer",
+      "tester"
+   ],
+   "location": [
+      "USA",
+      "bangalore"
+   ]
+},
+{
+   "userGroup": "SME",
+    "users": [
+       "milan",
+       "waina",
+       "kylee"
+   ],
+   "roles": [
+      "Tester",
+      "developer"
+   ],
+   "location": [
+      "bangalore",
+      "delhi"
+   ]
+},
+{
+   "userGroup": "SME",
+    "users": [
+       "atul",
+       "amit",
+       "june"
+   ],
+   "roles": [
+      "developer",
+      "tester"
+   ],
+   "location": [
+      "delhi",
+      "bangalore"
+   ]
+},
+{
+   "userGroup": "SME",
+    "users": [
+       "viksh",
+       "priyt",
+       "pinto"
+   ],
+   "roles": [
+      "Designer",
+      "tester"
+   ],
+   "location": [
+      "mumbai",
+      "nashville"
+   ]
+},
+{
+   "userGroup": "SME",
+    "users": [
+       "foo",
+       "ros",
+       "wes"
+   ],
+   "roles": [
+      "Designer",
+      "tester"
+   ],
+   "location": [
+      "bangalore",
+      "USA"
+   ]
+},
+{
+   "userGroup": "SME",
+    "users": [
+       "dorl",
+       "sury",
+       "surv"
+   ],
+   "roles": [
+      "tester",
+      "tester"
+   ],
+   "location": [
+      "pune",
+      "bangalore"
+   ]
+},
+{
+   "userGroup": "SME",
+    "users": [
+       "mick",
+       "dona",
+       "angl"
+   ],
+   "roles": [
+      "tester",
+      "tester"
+   ],
+   "location": [
+      "read",
+      "write"
+   ]
+},
+{
+   "userGroup": "SME",
+    "users": [
+       "dipu",
+       "sarb",
+       "barc"
+   ],
+   "roles": [
+      "developer",
+      "tester"
+   ],
+   "location": [
+      "read",
+      "write"
+   ]
+}
+]

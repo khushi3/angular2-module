@@ -1,21 +1,24 @@
 import { Routes, RouterModule }  from '@angular/router';
 import { Pages } from './pages.component';
+import { ModuleWithProviders } from '@angular/core';
 // noinspection TypeScriptValidateTypes
-const routes: Routes = [
+
+// export function loadChildren(path) { return System.import(path); };
+
+export const routes: Routes = [
   {
     path: 'login',
-    loadChildren: () => System.import('./login/login.module')
+    loadChildren: 'app/pages/login/login.module#LoginModule'
   },
   
   {
     path: 'pages',
     component: Pages,
     children: [
-      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-      { path: 'dashboard', loadChildren: () => System.import('./dashboard/dashboard.module') },
-      { path: 'tables', loadChildren: () => System.import('./tables/tables.module') }
+      { path: '', redirectTo: 'user-management', pathMatch: 'full' },
+      { path: 'user-management', loadChildren: 'app/pages/user-management/user-management.module#UserManagementModule' },
     ]
   }
 ];
 
-export const routing = RouterModule.forChild(routes);
+export const routing: ModuleWithProviders = RouterModule.forChild(routes);
