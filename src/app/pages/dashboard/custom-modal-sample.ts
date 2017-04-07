@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { DialogRef, ModalComponent, CloseGuard } from 'angular2-modal';
 import { BSModalContext } from 'angular2-modal/plugins/bootstrap/index';
-
+import { UserGroupService  } from './usergroup.service';
 export class CustomModalContext extends BSModalContext {
   public num1: number;
   public num2: number;
@@ -33,7 +33,7 @@ export class CustomModalContext extends BSModalContext {
   /* tslint:disable */ template: `
   <div class="container-fluid">
 <p></p>
-<dual-list [sort]="keepSorted" [source]="source" [key]="key" [display]="display" [filter]="filter" [(destination)]="confirmed" height="265px"></dual-list>
+<dual-list [sort]="keepSorted" [source]="sourceStations" [key]="key" [display]="display" [filter]="filter" [(destination)]="confirmed" height="265px"></dual-list>
 
 <div class="tab-content">
 <div class="tab-pane" [class.active]="tab===1">
@@ -78,11 +78,16 @@ export class CustomModal implements CloseGuard, ModalComponent<CustomModalContex
 
   public wrongAnswer: boolean;
   public shouldUseMyClass: boolean;
-
-  constructor(public dialog: DialogRef<CustomModalContext>) {
+  private sourceStations:Array<any>;
+  constructor(private userGroupService : UserGroupService, public dialog: DialogRef<CustomModalContext>) {
     this.context = dialog.context;
     this.wrongAnswer = true;
     dialog.setCloseGuard(this);
+    this.userGroupService.getStations().subscribe(data => {
+      this.sourceStations = data;
+
+      console.log("new",data);
+    }, error => console.log('Could not load userGroups '));
   }
 
   onKeyUp(value) {
@@ -109,7 +114,7 @@ export class CustomModal implements CloseGuard, ModalComponent<CustomModalContex
   private source:Array<any>;
   private confirmed:Array<any>;
 
-  private sourceStations:Array<any>;
+
   private sourceChessmen:Array<any>;
 
   private confirmedStations:Array<any>;
