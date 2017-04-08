@@ -4,7 +4,6 @@ import { Observable } from 'rxjs/Rx';
 
 @Injectable()
 export class UserGroupService {
-
  public headers: Headers;
  public response: Response;
 
@@ -24,11 +23,27 @@ public getStations(): Observable<any> {
 		.map(response => response.json());
 }
 
-public addUserGroup(userGroupName): Observable<any> {
+
+public addUserGroup(userGroupName, roles, users): Observable<any> {
 		console.log("inside service")
+		var currDate = new Date().toJSON();
 
 		var userGroup = {
-			"userGroupName" : userGroupName
+			"userGroupName" : userGroupName,
+			"roles" : roles,
+			"users" : users,
+			"dateCreated" : currDate
+		}
+
+		return this.http.post('http://localhost:7000/usergrp' ,JSON.stringify(userGroup), { headers: this.headers })
+						.map(response=> response.json());
+		}
+		public saveUsers(users): Observable<any> {
+		console.log("inside service")
+		//var currDate = new Date().toJSON();
+
+		var userGroup = {
+			"users" : users
 		}
 
 		return this.http.post('http://localhost:7000/usergrp' ,JSON.stringify(userGroup), { headers: this.headers })

@@ -3,6 +3,9 @@ import { Component } from '@angular/core';
 import { DialogRef, ModalComponent, CloseGuard } from 'angular2-modal';
 import { BSModalContext } from 'angular2-modal/plugins/bootstrap/index';
 import { UserGroupService  } from './usergroup.service';
+import {UserGroup} from './userGroup';
+import {Http, Response} from '@angular/http';
+
 export class CustomModalContext extends BSModalContext {
   public num1: number;
   public num2: number;
@@ -22,6 +25,7 @@ export class CustomModalContext extends BSModalContext {
 })
 export class CustomModal implements CloseGuard, ModalComponent<CustomModalContext> {
   context: CustomModalContext;
+   usergroup: UserGroup;
 
   public wrongAnswer: boolean;
   public shouldUseMyClass: boolean;
@@ -32,11 +36,23 @@ export class CustomModal implements CloseGuard, ModalComponent<CustomModalContex
     dialog.setCloseGuard(this);
     this.userGroupService.getStations().subscribe(data => {
       this.sourceStations = data;
-
       console.log("new",data);
     }, error => console.log('Could not load userGroups '));
   }
 
+public  saveUsers() {  
+    if (this.usergroup.users) {
+      //this.userGroupName = userGrpName;
+     // console.log( "func "+this.usergroup.users);
+      this.userGroupService.saveUsers(this.usergroup.users)
+      .subscribe((r:Response)=>{
+        console.log(r);
+      });
+      console.log("users saved successfully!!");
+
+      window.location.reload();
+    }
+  }
   onKeyUp(value) {
     this.wrongAnswer = value != 5;
     this.dialog.close();
@@ -52,9 +68,7 @@ export class CustomModal implements CloseGuard, ModalComponent<CustomModalContex
   }
 
   private tab:number = 1;
-
   private keepSorted:boolean = true;
-
   private key:string;
   private display:string;
   private filter:boolean = false;
@@ -63,29 +77,13 @@ export class CustomModal implements CloseGuard, ModalComponent<CustomModalContex
 
 
   private sourceChessmen:Array<any>;
-
   private confirmedStations:Array<any>;
   private confirmedChessmen:Array<any>;
-
   private toggle:boolean = true;
-
   private userAdd:string = '';
-
-  private users:Array<any> = [
-    { key: 1, userName: 'A1237ZZ','firstName': 'Sandeep','lastName': 'N'},
-    { key: 2, userName: 'A1238ZZ', 'firstName': 'Saurah',  'lastName': 'S'},
-    { key: 3, userName: 'A1236ZZ', 'firstName': 'Ravi Kiran','lastName': 'R G'},
-    { key: 4, userName: 'A1245ZZ', 'firstName': 'Ramu','lastName':'V' },
-    { key: 5, userName: 'A6274ZZ', 'firstName': 'Khushboo','lastName': 'Bh'}
-   ];
-
   private chessmen:Array<any> = [
     { _id: 1, name: "Pawn" },
     { _id: 2, name: "Rook" },
-    { _id: 3, name: "Knight" },
-    { _id: 4, name: "Bishop" },
-    { _id: 5, name: "Queen" },
-    { _id: 6, name: "King" }
   ];
 
   ngOnInit() {
@@ -120,7 +118,7 @@ export class CustomModal implements CloseGuard, ModalComponent<CustomModalContex
 
   doReset() {
     this.sourceChessmen = JSON.parse(JSON.stringify(this.chessmen));
-    this.sourceStations = JSON.parse(JSON.stringify(this.users));
+    this.sourceStations = [];
     this.confirmedChessmen = new Array<any>();
     this.confirmedStations = new Array<any>();
 
@@ -170,4 +168,5 @@ export class CustomModal implements CloseGuard, ModalComponent<CustomModalContex
   filterBtn() {
     return (this.filter ? 'Hide Filter' : 'Show Filter');
   }
+
 }
