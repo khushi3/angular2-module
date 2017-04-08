@@ -185,11 +185,12 @@
       "id": 22
     }
   ],
-  "stations": [
-    { "key": 1, "station": "Antonito","state": "CO" },
-    { "key": 2, "station": "Big Horn", "state": "NM" },
-    { "key": 3, "station": "Sublette", "state": "NM" },
-    { "key": 4, "station": "Toltec", "state": "NM" },
-    { "key": 5, "station": "Osier", "state": "CO" }
+  "users": [
+    { "key": 1, "userName": "A1237ZZ","firstName": "Sandeep","lastName": "N"},
+    { "key": 2,"userName": "A1238ZZ", "firstName": "Saurah",  "lastName": "S"},
+    { "key": 3, "userName": "A1236ZZ", "firstName": "Ravi Kiran","lastName": "R G"},
+    { "key": 4, "userName": "A1245ZZ", "firstName": "Ramu","lastName":"V" },
+    { "key": 5, "userName": "A6274ZZ", "firstName": "Khushboo","lastName": "Bh"}
    ]
 }
+

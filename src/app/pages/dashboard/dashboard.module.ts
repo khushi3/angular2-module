@@ -13,7 +13,7 @@ import { UsersMap } from './usersMap';
 import { UsersMapService } from './usersMap/usersMap.service';
 import { UserGroupService  } from './usergroup.service';
 import { DualListComponent } from './dual-list.component';
-import { CustomModal } from './custom-modal-sample';
+import { CustomModal } from './custom-modal';
 
 @NgModule({
   imports: [

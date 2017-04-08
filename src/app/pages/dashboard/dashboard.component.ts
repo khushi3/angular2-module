@@ -4,7 +4,7 @@ import { ViewContainerRef, ViewEncapsulation } from '@angular/core';
 import {Http, Response} from '@angular/http';
 import { Modal, BSModalContext } from 'angular2-modal/plugins/bootstrap';
 import { Overlay, overlayConfigFactory } from 'angular2-modal';
-import { CustomModal } from './custom-modal-sample';
+import { CustomModal } from './custom-modal';
 
 @Component({
   selector: 'dashboard',
