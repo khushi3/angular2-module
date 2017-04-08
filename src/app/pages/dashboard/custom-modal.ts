@@ -81,6 +81,7 @@ public  saveUsers() {
   private confirmedChessmen:Array<any>;
   private toggle:boolean = true;
   private userAdd:string = '';
+
   private chessmen:Array<any> = [
     { _id: 1, name: "Pawn" },
     { _id: 2, name: "Rook" },
