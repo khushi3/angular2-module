@@ -81,7 +81,6 @@ public  saveUsers() {
   private confirmedChessmen:Array<any>;
   private toggle:boolean = true;
   private userAdd:string = '';
-
   private chessmen:Array<any> = [
     { _id: 1, name: "Pawn" },
     { _id: 2, name: "Rook" },
@@ -93,7 +92,7 @@ public  saveUsers() {
 
   private useStations() {
     this.toggle = true;
-    this.key = 'key';
+    this.key = 'userId';
     this.display = 'firstName';
     this.keepSorted = true;
     this.source = this.sourceStations;;
