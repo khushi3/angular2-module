@@ -71,14 +71,6 @@ export class CustomModal implements CloseGuard, ModalComponent<CustomModalContex
 
   private userAdd:string = '';
 
-  private users:Array<any> = [
-    { key: 1, userName: 'A1237ZZ','firstName': 'Sandeep','lastName': 'N'},
-    { key: 2, userName: 'A1238ZZ', 'firstName': 'Saurah',  'lastName': 'S'},
-    { key: 3, userName: 'A1236ZZ', 'firstName': 'Ravi Kiran','lastName': 'R G'},
-    { key: 4, userName: 'A1245ZZ', 'firstName': 'Ramu','lastName':'V' },
-    { key: 5, userName: 'A6274ZZ', 'firstName': 'Khushboo','lastName': 'Bh'}
-   ];
-
   private chessmen:Array<any> = [
     { _id: 1, name: "Pawn" },
     { _id: 2, name: "Rook" },
@@ -120,7 +112,7 @@ export class CustomModal implements CloseGuard, ModalComponent<CustomModalContex
 
   doReset() {
     this.sourceChessmen = JSON.parse(JSON.stringify(this.chessmen));
-    this.sourceStations = JSON.parse(JSON.stringify(this.users));
+    this.sourceStations = [];
     this.confirmedChessmen = new Array<any>();
     this.confirmedStations = new Array<any>();
 
