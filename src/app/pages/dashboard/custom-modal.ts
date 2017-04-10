@@ -51,7 +51,8 @@ public  saveUsers() {
       });
       console.log("users saved successfully!!");
 
-      window.location.reload();
+     // window.location.reload();
+      this.dialog.close();
     }
   }
   closeModal() {
