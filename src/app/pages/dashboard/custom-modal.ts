@@ -30,6 +30,7 @@ export class CustomModal implements CloseGuard, ModalComponent<CustomModalContex
   public wrongAnswer: boolean;
   public shouldUseMyClass: boolean;
   private sourceStations:Array<any>;
+  private modalOpen: boolean;
   constructor(private userGroupService: UserGroupService, public dialog: DialogRef<CustomModalContext>) {
     this.context = dialog.context;
     this.wrongAnswer = true;
@@ -41,10 +42,10 @@ export class CustomModal implements CloseGuard, ModalComponent<CustomModalContex
   }
 
 public  saveUsers() {  
-    if (this.usergroup.users) {
+    if (this.confirmed && this.confirmed.length) {
       //this.userGroupName = userGrpName;
      // console.log( "func "+this.usergroup.users);
-      this.userGroupService.saveUsers(this.usergroup.users)
+      this.userGroupService.saveUsers(this.confirmed)
       .subscribe((r:Response)=>{
         console.log(r);
       });
@@ -52,6 +53,10 @@ public  saveUsers() {
 
       window.location.reload();
     }
+  }
+  closeModal() {
+    this.modalOpen = false;
+    this.dialog.close();
   }
   onKeyUp(value) {
     this.wrongAnswer = value != 5;
@@ -64,7 +69,7 @@ public  saveUsers() {
   }
 
   beforeClose(): boolean {
-    return this.wrongAnswer;
+    return this.modalOpen;
   }
 
   private tab:number = 1;
