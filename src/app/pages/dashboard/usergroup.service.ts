@@ -24,7 +24,7 @@ public getStations(): Observable<any> {
 }
 
 
-public addUserGroup(userGroupName, roles, users): Observable<any> {
+public addUserGroup(userGroupName, users, roles): Observable<any> {
 		console.log("inside service")
 		var currDate = new Date().toJSON();
 

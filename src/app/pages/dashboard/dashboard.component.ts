@@ -22,6 +22,7 @@ export class Dashboard implements OnInit{
 
   public userGroups = [];
   public userGroupName : string;
+  public newUsers:Array<any>;
 
    // roles = [
    //     {id:0, name: "--Select--"},
@@ -49,10 +50,9 @@ export class Dashboard implements OnInit{
     }
 
   public  addUserGroup() {  
-    if (this.usergroup.userGroupName) {
+    if (this.userGroupName) {
       //this.userGroupName = userGrpName;
-      console.log( "func "+this.usergroup.userGroupName);
-      this.userGroupService.addUserGroup(this.usergroup.userGroupName,this.usergroup.users,this.usergroup.roles)
+      this.userGroupService.addUserGroup(this.userGroupName,this.newUsers,[])
       .subscribe((r:Response)=>{
         console.log(r);
       });
@@ -66,7 +66,14 @@ export class Dashboard implements OnInit{
     console.log("clicking on edit")
   }
  onClick() {
-   this.modal.open(CustomModal, overlayConfigFactory({ num1: 2, num2: 3 }, BSModalContext));
+   var modalWindow = this.modal.open(CustomModal, overlayConfigFactory({ num1: 2, num2: 3 }, BSModalContext));
+   modalWindow.then((resultPromise) => {
+            resultPromise.result.then((result) => {
+                this.newUsers = result || [];
+            }, () => {
+              console.log('Rejected!');
+            });
+        });
   }
 
   private tab:number = 1;
