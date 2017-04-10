@@ -1,9 +1,17 @@
  <div class="container-fluid" style="height: 420px;">
 <p></p>
-<dual-list [sort]="keepSorted" [source]="sourceStations" [key]="key" [display]="display" [filter]="filter" [(destination)]="confirmed" height="265px"></dual-list>
+<div class="col-md-3" style="float: none;width: 60%;">
+  <div class="input-group add-on">
+      <input class="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text" style="z-index: 0;">
+      <div class="input-group-btn" style="background-color: #00abff">
+        <span><button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button></span>
+      </div>
+    </div>
+    </div>
+  <dual-list [sort]="keepSorted" [source]="sourceUsers" [key]="key" [display]="display" [filter]="filter" [(destination)]="confirmed" height="265px"></dual-list>
 
   <div class="modal-footer">
-  <button class="btn btn-primary" (click)="closeModal('custom-modal-1')" data-dismiss="modal" style="float: left;">
+  <button class="btn btn-primary" (click)="closeModal()" data-dismiss="modal" style="float: left;">
   <i class="fa fa-times" aria-hidden="true"> Cancel</i></button>
   <button  type="submit" class="btn btn-primary" (click)= "saveUsers()" style="float: right;">
           <span class="fa fa-save"></span> Save
@@ -15,4 +23,3 @@
     </div>
 </modal> -->
 </div>
-
