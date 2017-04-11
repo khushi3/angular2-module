@@ -18,7 +18,7 @@ public getUserGroups(): Observable<any>  {
 		.map(response => response.json());
 }
 
-public getStations(): Observable<any> {
+public getUsers(): Observable<any> {
   return this.http.get('http://localhost:7000/users')
 		.map(response => response.json());
 }

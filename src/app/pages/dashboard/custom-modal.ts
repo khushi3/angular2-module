@@ -11,15 +11,9 @@ export class CustomModalContext extends BSModalContext {
   public num2: number;
 }
 
-/**
- * A Sample of how simple it is to create a new window, with its own injects.
- */
 @Component({
   selector: 'modal-content',
    styleUrls: ['./custom-modal.scss'],
-
-  //TODO: [ngClass] here on purpose, no real use, just to show how to workaround ng2 issue #4330.
-  // Remove when solved.
   templateUrl: './custom-modal.html',
   
 })
@@ -29,29 +23,27 @@ export class CustomModal implements CloseGuard, ModalComponent<CustomModalContex
 
   public wrongAnswer: boolean;
   public shouldUseMyClass: boolean;
-  private sourceStations:Array<any>;
+  private sourceUsers:Array<any>;
   private modalOpen: boolean;
   constructor(private userGroupService: UserGroupService, public dialog: DialogRef<CustomModalContext>) {
     this.context = dialog.context;
     this.wrongAnswer = true;
     dialog.setCloseGuard(this);
-    this.userGroupService.getStations().subscribe(data => {
-      this.sourceStations = data;
+    this.userGroupService.getUsers().subscribe(data => {
+      this.sourceUsers = data;
       console.log("new",data);
-    }, error => console.log('Could not load userGroups '));
+    }, error => console.log('Could not load users '));
   }
 
 public  saveUsers() {  
     if (this.confirmed && this.confirmed.length) {
       //this.userGroupName = userGrpName;
      // console.log( "func "+this.usergroup.users);
-      // this.userGroupService.saveUsers(this.confirmed)
-      // .subscribe((r:Response)=>{
-      //   console.log(r);
-      // });
+      //this.userGroupService.saveUsers(this.confirmed)
+      //.subscribe((r:Response)=>{
+       // console.log(r);
+      //});
       console.log("users saved successfully!!");
-
-     // window.location.reload();
       this.dialog.close(this.confirmed);
     }
   }
@@ -83,7 +75,7 @@ public  saveUsers() {
 
 
   private sourceChessmen:Array<any>;
-  private confirmedStations:Array<any>;
+  private confirmedUsers:Array<any>;
   private confirmedChessmen:Array<any>;
   private toggle:boolean = true;
   private userAdd:string = '';
@@ -96,13 +88,13 @@ public  saveUsers() {
     this.doReset();
   }
 
-  private useStations() {
+  private useUsers() {
     this.toggle = true;
     this.key = 'userId';
     this.display = 'firstName';
     this.keepSorted = true;
-    this.source = this.sourceStations;;
-    this.confirmed = this.confirmedStations;
+    this.source = this.sourceUsers;;
+    this.confirmed = this.confirmedUsers;
   }
 
   private useChessmen() {
@@ -118,19 +110,19 @@ public  saveUsers() {
     if (this.toggle) {
       this.useChessmen();
     } else {
-      this.useStations();
+      this.useUsers();
     }
   }
 
   doReset() {
     this.sourceChessmen = JSON.parse(JSON.stringify(this.chessmen));
-    this.sourceStations = [];
+    this.sourceUsers = [];
     this.confirmedChessmen = new Array<any>();
-    this.confirmedStations = new Array<any>();
+    this.confirmedUsers = new Array<any>();
 
     if (this.toggle) {
-      this.useStations();
-      this.confirmedStations.push( { key: 32, station: 'Eureka', state: 'CO' } );
+      this.useUsers();
+      this.confirmedUsers.push( { key: 32, station: 'Eureka', state: 'CO' } );
     } else {
       this.useChessmen();
     }
